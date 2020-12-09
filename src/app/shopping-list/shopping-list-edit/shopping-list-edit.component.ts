@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -6,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit {
-  @Output() ingredientAdded = new EventEmitter<{ingredientName: string, ingredientAmount: number}>();
+  @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
   constructor() { }
 
@@ -14,10 +15,8 @@ export class ShoppingListEditComponent implements OnInit {
   }
 
   onAddIngredient(nameInput: HTMLInputElement, amountInput: HTMLInputElement) {
-    this.ingredientAdded.emit({
-      ingredientName: nameInput.value,
-      ingredientAmount: Number(amountInput.value)
-    });
+    const newIngredient = new Ingredient(String(nameInput.value), Number(amountInput.value));
+    this.ingredientAdded.emit(newIngredient);
   }
 
 }
