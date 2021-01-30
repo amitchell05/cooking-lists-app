@@ -18,6 +18,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthComponent } from './auth/auth.component';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  // Provide shopping list service here to use the service application-wide
+  // TODO/Nice To Have: Provide shopping list service here to use the service application-wide
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent],
 })
