@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { ShoppingListService } from '../shopping-list.service';
 
 import { ShoppingListEditComponent } from './shopping-list-edit.component';
@@ -11,6 +12,7 @@ describe('ShoppingListEditComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ShoppingListEditComponent],
+        imports: [FormsModule],
         providers: [ShoppingListService],
       }).compileComponents();
     })

@@ -4,11 +4,11 @@
   style="cursor: pointer"
   class="list-group-item clearfix"
 >
-  <div class="pull-left">
+  <div class="pull-left" *ngIf="recipe">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>
   </div>
-  <span class="pull-right">
+  <span class="pull-right" *ngIf="recipe">
     <img
       [src]="recipe.imagePath"
       alt="{{ recipe.name }}"
