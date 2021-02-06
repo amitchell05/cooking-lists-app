@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 
 import { User } from './user.model';
-import { Router } from '@angular/router';
 
 export interface AuthResponseData {
   kind: string;
@@ -19,7 +19,7 @@ export interface AuthResponseData {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
-  private tokenExpirationTimeer: any;
+  private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -100,15 +100,15 @@ export class AuthService {
     this.user.next(null);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
-    if (this.tokenExpirationTimeer) {
-      clearTimeout(this.tokenExpirationTimeer);
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
     }
-    this.tokenExpirationTimeer = null;
+    this.tokenExpirationTimer = null;
   }
 
   autoLogout(expirationDuration: number) {
     console.log(expirationDuration);
-    this.tokenExpirationTimeer = setTimeout(() => {
+    this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
