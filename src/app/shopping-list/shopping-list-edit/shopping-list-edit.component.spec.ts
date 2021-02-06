@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ShoppingListService } from '../shopping-list.service';
 
 import { ShoppingListEditComponent } from './shopping-list-edit.component';
 
@@ -6,12 +7,14 @@ describe('ShoppingListEditComponent', () => {
   let component: ShoppingListEditComponent;
   let fixture: ComponentFixture<ShoppingListEditComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ShoppingListEditComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ShoppingListEditComponent],
+        providers: [ShoppingListService],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ShoppingListEditComponent);
@@ -19,7 +22,7 @@ describe('ShoppingListEditComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the shopping-list-edit component', () => {
     expect(component).toBeTruthy();
   });
 });
